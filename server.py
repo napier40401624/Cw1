@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import json
 
 w=json.load(open("worldl.json"))
@@ -56,4 +56,26 @@ def deleteCountry(n):
         page_number=0
         )
 
+@app.route('/editcountryByName/<n>')
+def editcountryByNamePage(n):
+    c=None
+    for x in w:
+        if x['name']==n:
+            c=x
+    return render_template(
+        'country-edit.html',
+        c=c)
+
+@app.route('/updatecountryByName')
+def updatecountryByNamePage():
+    n=request.args.get('country')
+    c=None
+    for x in w:
+        if x['name']==n:
+            c=x
+    c['capital']=request.args.get('capital')
+    c['continent']=request.args.get('continent')
+    return render_template(
+        'country.html',
+        c=c)
 app.run(host='0.0.0.0',port=8080,debug=True)

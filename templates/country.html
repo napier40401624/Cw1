@@ -4,6 +4,7 @@
 	<link rel='stylesheet' href='/static/style.css'>
 </head>
 	<body>
+		
 		<h1>{{c['name']}}</h1>
 		<div class='properties'>
 			<div>
@@ -24,6 +25,10 @@
 			</div>
 		</div>
 		<img src="/static/flags/{{c['tld']}}.gif" class='big'>
+		<div class="edit-button">
+			<a href="/editcountryByName/{{c.name}}">Edit</a>
+		</div>
 		<div class="delete-button"><a href='/delete/{{c.name}}'>Delete</a></div>
+
 	</body>
 </html>

@@ -23,6 +23,10 @@
 				<div>GDP (million $)</div>
 				<div>{{ "{:,.0f}".format(c['gdp']/1000000) }}</div>
 			</div>
+			<div>
+				<div>Area </div>
+				<div>{{ "{:,.0f}".format(c['area']) }}</div>
+			</div>
 		</div>
 		<img src="/static/flags/{{c['tld']}}.gif" class='big'>
 		<div class="edit-button">

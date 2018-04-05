@@ -23,7 +23,7 @@ def mainPage():
 def beginPage(b):
 	bn = int(b)
 	return render_template('index.html',
-        nc=nc,
+        nc=int(len(w)),
 		w = w[bn:bn+page_size],
 		page_number = bn,
 		page_size = page_size
@@ -46,11 +46,13 @@ def countryByNamePage(n):
             c=x
     return render_template(
         'country.html',
+        nc=int(len(w)),
         c=c)
                         
 @app.route('/country/<i>')
 def countryPage(i):
     return render_template('country.html', c=w[int(i)])
+    nc=int(len(w)),
 
 @app.route('/delete/<n>')
 def deleteCountry(n):
@@ -61,11 +63,10 @@ def deleteCountry(n):
         i=i+1
     del w[i]
     return render_template('index.html',
-        nc=nc-1,
         w=w[0:page_size],
+        nc=int(len(w)),
         page_size=page_size,
-        page_number=0
-        )
+        page_number=0)
 
 @app.route('/editcountryByName/<n>')
 def editcountryByNamePage(n):
@@ -75,6 +76,7 @@ def editcountryByNamePage(n):
             c=x
     return render_template(
         'country-edit.html',
+        nc=int(len(w)),
         c=c)
 
 @app.route('/updatecountryByName')
@@ -88,6 +90,41 @@ def updatecountryByNamePage():
     c['continent']=request.args.get('continent')
     return render_template(
         'country.html',
+        nc=int(len(w)),
+        c=c)
+
+@app.route('/createcountry/<n>')
+def Createcountry(n):
+    c=None
+    for x in w:
+        if x['name']==n:
+            c=x
+    
+    return render_template(
+        'createcountry.html',
+        nc=int(len(w)),
+                c=c)
+
+@app.route('/updatecreatecountry')
+def updatecreatecountry():
+    n=request.args.get('country')
+    #n=request.args.get('capital')
+    #n=request.args.get('continent')
+    #n=request.args.get('population')
+    #n=request.args.get('gdp')
+    #n=request.args.get('area')
+    c=None
+    for x in w:
+        if x['name']==n:
+            c=x
+            c['country']=request.args.get('country')
+            c['capital']=request.args.get('capital')
+            c['continent']=request.args.get('continent')
+            c['population']=request.args.get('population')
+            c['gdp']=request.args.get('gdp')
+            c['area']=request.args.get('area')
+
+    return render_template('country.html',nc=int(len(w)),
         c=c)
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=5624,debug=True)

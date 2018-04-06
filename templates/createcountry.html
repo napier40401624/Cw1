@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+	<link rel='stylesheet' href='/static/style.css'>
+</head>
+	<body>
+		<form action="/updatecreatecountry">
+		<h1>{{c['name']}}</h1>
+		<div class='properties'>
+			<div>
+				<div>Country Name</div>
+				<div><input name='country' type="text" value="" id=""></div>
+			</div>
+			<div>
+				<div>Capital</div>
+				<div><input name='capital' type="text" value="" id=""></div>
+			</div>
+			<div>
+				<div>Continent</div>
+				<div><input type="text" name="continent" value=""></div>
+			</div>
+			<div>
+				<div>Population</div>
+				<div><input type="text" name="population" value=""></div>
+			</div>
+			<div>
+				<div>GDP</div>
+				<div><input type="text" name="gdp" value=""></div>
+			</div>
+		
+			<div>
+				<div>Area</div>
+				<div><input type="text" name="area" value=""></div>
+			</div>
+			<div>
+				<div>TLD</div>
+				<div><input type="text" name="tld" value=""></div>
+			</div>
+		</div>
+		<input type="submit" value="submit">
+		</form>
+	</body>
+</html>

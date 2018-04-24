@@ -46,7 +46,7 @@ def continentPage(a):
     return render_template('continent.html',
             length_of_cl=len(cl),
             cl=cl,
-            a=a
+            a=a,lota=lota
             )
 @app.route('/startWithAlphabetic/<a>')
 def startWithAlphabetic(a):

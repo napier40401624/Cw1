@@ -5,7 +5,9 @@ w=json.load(open("worldl.json"))
 nc=int(len(w))
 page_size=20
 lastBigNum=(nc//page_size)*page_size
+lota=sorted(list(set([c['name'][0] for c in w])))
 
+print(lota)
 app = Flask(__name__)
 for c in w:
     c['tld']=c['tld'][1:]
@@ -18,7 +20,8 @@ def mainPage():
         nc=nc,
         w=w[0:page_size],
         page_size=page_size,
-        page_number=0
+        page_number=0,
+        lota=lota
         )     
                            
 @app.route('/begin/<b>')
@@ -34,7 +37,7 @@ def beginPage(b):
         nc=int(len(w)),
 		w = w[bn:bn+page_size],
 		page_number = bn,
-		page_size = page_size
+		page_size = page_size,lota=lota
 		)
     
 @app.route('/continent/<a>')
@@ -45,7 +48,15 @@ def continentPage(a):
             cl=cl,
             a=a
             )
-    
+@app.route('/startWithAlphabetic/<a>')
+def startWithAlphabetic(a):
+    cl=[c for c in w if c['name'][0]==a]
+    return render_template('continent.html',
+            length_of_cl=len(cl),
+            cl=cl,
+            a=a,lota=lota
+            )
+
 @app.route('/countryByName/<n>')
 def countryByNamePage(n):
     c=None

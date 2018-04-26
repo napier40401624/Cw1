@@ -10,16 +10,27 @@ img
 .properties div div:first-child{
 	font-weight: bold;
 }
-.nav_button{
-	border:solid thin black;
-	padding:1ex;
-	margin: 1ex;
-	border-radius: 0.5ex;
-	width:15ex;
+.button {
+	background-color: white;
+	border:solid thin grey;
+	color: white;
+	padding: 5px 20px;
 	text-align: center;
+	text-decoration: none;
 	display: inline-block;
-
+	font-size: 16px;
+	margin: 4px 2px;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
+	cursor: pointer;
 }
+.nav_button {
+	background-color: white;
+	color: black;
+	border:2px solid #e7e7e7;
+}
+.nav_button:hover {background-color: #e7e7e7;}
+
 ul#sort a:link{
 	background-color: #3366BB;
 	color:white;
@@ -31,4 +42,13 @@ ul#sort a:link{
 }
 ul#sort a:hover{
 	background-color: green;
+}
+.back-button {
+	background-color: white;
+	color:black;
+	border: 2px solid green;
+}
+.back-button:hover {
+	background-color: green;
+	color:white;
 }

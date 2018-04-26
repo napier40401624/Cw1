@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+	<link rel='stylesheet' href='/static/style.css'>
+</head>
+	<body>
+		<h1>World Factbook</h1>
+		<div>
+		 <form>
+		 	<ul id="sort">
+		 	{% for c in lota %}
+		 		<a href="/startWithAlphabetic/{{c}}">{{c}}</a>
+		 	{% endfor %}
+		 	</ul>
+		 </form>
+		</div>	
+		<div>
+			{% block content %}
+			{% endblock %}
+		</div>
+		<br>
+		<div class="button back-button"><a href="/"> Back </a>
+		</div>
+		
+	</body>
+</html>

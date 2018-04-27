@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 		
-			
+		<link rel='stylesheet' href='/static/style.css'>
 		<div>There are {{nc}} countries in the world.</div>
-		<ul>
+		<ul id="sort">
 			{% for c in w %}
 			<li><a href='/countryByName/{{c.name}}'>
 				<img src='/static/flags/{{c["tld"]}}.gif' class='tiny'>

@@ -8,7 +8,6 @@ lastBigNum=(nc//page_size)*page_size
 lota=sorted(list(set([c['name'][0] for c in w])))
 
 print(lota)
-app = Flask(__name__)
 for c in w:
     c['tld']=c['tld'][1:]
 
@@ -46,7 +45,7 @@ def continentPage(a):
     return render_template('continent.html',
             length_of_cl=len(cl),
             cl=cl,
-            a=a,lota=lota
+            a=a,
             )
 @app.route('/startWithAlphabetic/<a>')
 def startWithAlphabetic(a):
